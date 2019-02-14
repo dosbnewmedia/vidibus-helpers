@@ -5,7 +5,9 @@ module Vidibus
         extend ActiveSupport::Concern
 
         included do
-          helper_method :current_host, :current_url
+          if respond_to?(:helper_method)
+            helper_method :current_host, :current_url
+          end
         end
 
         # Returns current hostname with protocol.
